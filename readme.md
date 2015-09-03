@@ -34,7 +34,7 @@ gulp.task('default', function () {
 
 #### options
 
-XO [options](https://github.com/sindresorhus/xo#config) can be specified in `package.json`.
+XO [options](https://github.com/sindresorhus/xo#config) can be specified in package.json.
 
 In the gulpfile you can specify the following options:
 

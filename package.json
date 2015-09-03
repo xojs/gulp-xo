@@ -54,7 +54,7 @@
     "xo": "^0.8.0"
   },
   "devDependencies": {
-    "ava": "0.0.4",
+    "ava": "*",
     "gulp": "^3.9.0",
     "hooker": "^0.2.3",
     "vinyl-file": "^1.2.1"

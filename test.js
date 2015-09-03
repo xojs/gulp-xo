@@ -15,7 +15,7 @@ test(function (t) {
 
 			if (/camelcase/.test(str) && /no-unused-vars/.test(str)) {
 				hooker.unhook(gutil, 'log');
-				t.assert(true);
+				t.pass();
 			}
 		}
 	);
