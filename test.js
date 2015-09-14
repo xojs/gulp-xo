@@ -1,17 +1,16 @@
-'use strict';
-var test = require('ava');
-var vinylFile = require('vinyl-file');
-var hooker = require('hooker');
-var gutil = require('gulp-util');
-var xo = require('./');
+import test from 'ava';
+import vinylFile from 'vinyl-file';
+import hooker from 'hooker';
+import gutil from 'gulp-util';
+import xo from './';
 
-test(function (t) {
+test(t => {
 	t.plan(1);
 
-	var stream = xo();
+	const stream = xo();
 
-	hooker.hook(gutil, 'log', function (str) {
-			str = [].join.call(arguments, ' ');
+	hooker.hook(gutil, 'log', (...args) => {
+			const str = args.join(' ');
 
 			if (/camelcase/.test(str) && /no-unused-vars/.test(str)) {
 				hooker.unhook(gutil, 'log');
@@ -20,7 +19,7 @@ test(function (t) {
 		}
 	);
 
-	stream.on('error', function () {});
+	stream.on('error', () => {});
 	stream.write(vinylFile.readSync('fixture.js'));
 	stream.end();
 });

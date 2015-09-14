@@ -13,7 +13,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "xo && node test.js"
+    "test": "xo && ava"
   },
   "files": [
     "index.js"
@@ -58,10 +58,5 @@
     "gulp": "^3.9.0",
     "hooker": "^0.2.3",
     "vinyl-file": "^1.2.1"
-  },
-  "xo": {
-    "ignores": [
-      "fixture.js"
-    ]
   }
 }
