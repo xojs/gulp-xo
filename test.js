@@ -10,14 +10,13 @@ test(t => {
 	const stream = xo();
 
 	hooker.hook(gutil, 'log', (...args) => {
-			const str = args.join(' ');
+		const str = args.join(' ');
 
-			if (/camelcase/.test(str) && /no-unused-vars/.test(str)) {
-				hooker.unhook(gutil, 'log');
-				t.pass();
-			}
+		if (/camelcase/.test(str) && /no-unused-vars/.test(str)) {
+			hooker.unhook(gutil, 'log');
+			t.pass();
 		}
-	);
+	});
 
 	stream.on('error', () => {});
 	stream.write(vinylFile.readSync('fixture.js'));
