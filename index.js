@@ -34,7 +34,7 @@ module.exports = function (opts) {
 			results = xo.getErrorResults(results);
 		}
 
-		if (results.length > 0) {
+		if (report.errorCount > 0 || report.warningCount > 0) {
 			gutil.log('gulp-xo\n', xo.getFormatter()(results));
 		}
 
