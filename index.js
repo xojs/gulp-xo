@@ -6,7 +6,8 @@ var xo = require('xo');
 
 module.exports = function (opts) {
 	opts = objectAssign({
-		quiet: false
+		quiet: false,
+		reporter: 'stylish'
 	}, opts);
 
 	return through.obj(function (file, enc, cb) {
@@ -35,7 +36,7 @@ module.exports = function (opts) {
 		}
 
 		if (report.errorCount > 0 || report.warningCount > 0) {
-			gutil.log('gulp-xo\n', xo.getFormatter()(results));
+			gutil.log('gulp-xo\n', xo.getFormatter(opts.reporter)(results));
 		}
 
 		if (report.errorCount > 0) {

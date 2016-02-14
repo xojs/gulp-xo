@@ -17,14 +17,14 @@ $ npm install --save-dev gulp-xo
 ## Usage
 
 ```js
-var gulp = require('gulp');
-var xo = require('gulp-xo');
+const gulp = require('gulp');
+const xo = require('gulp-xo');
 
-gulp.task('default', function () {
-	return gulp.src('src/app.js')
+gulp.task('default', =>
+	gulp.src('src/app.js')
 		.pipe(xo())
 		.pipe(gulp.dest('dist'));
-});
+);
 ```
 
 
@@ -38,9 +38,16 @@ XO [options](https://github.com/sindresorhus/xo#config) can be specified in pack
 
 In the gulpfile you can specify the following options:
 
+##### reporter
+
+Type: `string`<br>
+Default: `'stylish'`
+
+Any [ESLint reporter](http://eslint.org/docs/user-guide/command-line-interface#f-format).
+
 ##### quiet
 
-Type: `boolean`  
+Type: `boolean`<br>
 Default: `false`
 
 Report errors only.
