@@ -20,10 +20,10 @@ $ npm install --save-dev gulp-xo
 const gulp = require('gulp');
 const xo = require('gulp-xo');
 
-gulp.task('default', =>
+gulp.task('default', () =>
 	gulp.src('src/app.js')
 		.pipe(xo())
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest('dist'))
 );
 ```
 
