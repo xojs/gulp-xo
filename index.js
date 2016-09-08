@@ -10,6 +10,10 @@ module.exports = function (opts) {
 		reporter: 'stylish'
 	}, opts);
 
+	var results = [];
+	var errorCount = 0;
+	var warningCount = 0;
+
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
 			cb(null, file);
@@ -29,20 +33,29 @@ module.exports = function (opts) {
 			this.emit('error', new gutil.PluginError('gulp-xo', err, {fileName: file.path}));
 		}
 
-		var results = report.results;
+		var result = report.results;
 
 		if (opts.quiet) {
-			results = xo.getErrorResults(results);
+			result = xo.getErrorResults(result);
 		}
 
-		if (report.errorCount > 0 || report.warningCount > 0) {
+		errorCount += report.errorCount;
+		warningCount += report.warningCount;
+
+		results.push(result);
+
+		cb(null, file);
+	}, function (cb) {
+		results = results.reduce((a, b) => a.concat(b), []);
+
+		if (errorCount > 0 || warningCount > 0) {
 			gutil.log('gulp-xo\n', xo.getFormatter(opts.reporter)(results));
 		}
 
-		if (report.errorCount > 0) {
-			this.emit('error', new gutil.PluginError('gulp-xo', report.errorCount + ' errors', {fileName: file.path}));
+		if (errorCount > 0) {
+			this.emit('error', new gutil.PluginError('gulp-xo', errorCount + ' errors'));
 		}
 
-		cb(null, file);
+		cb();
 	});
 };

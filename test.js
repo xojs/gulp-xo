@@ -20,5 +20,6 @@ test(t => {
 
 	stream.on('error', () => ({}));
 	stream.write(vinylFile.readSync('fixture.js'));
+	stream.write(vinylFile.readSync('fixture.js'));
 	stream.end();
 });
