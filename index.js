@@ -46,7 +46,9 @@ module.exports = function (opts) {
 
 		cb(null, file);
 	}, function (cb) {
-		results = results.reduce((a, b) => a.concat(b), []);
+		results = results.reduce(function (a, b) {
+			return a.concat(b);
+		}, []);
 
 		if (errorCount > 0 || warningCount > 0) {
 			gutil.log('gulp-xo\n', xo.getFormatter(opts.reporter)(results));
