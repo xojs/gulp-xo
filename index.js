@@ -1,18 +1,16 @@
 'use strict';
-var gutil = require('gulp-util');
-var through = require('through2');
-var objectAssign = require('object-assign');
-var xo = require('xo');
+const gutil = require('gulp-util');
+const through = require('through2');
+const xo = require('xo');
 
-module.exports = function (opts) {
-	opts = objectAssign({
-		quiet: false,
-		reporter: 'stylish'
+module.exports = opts => {
+	opts = Object.assign({
+		quiet: false
 	}, opts);
 
-	var results = [];
-	var errorCount = 0;
-	var warningCount = 0;
+	let results = [];
+	let errorCount = 0;
+	let warningCount = 0;
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
@@ -25,7 +23,7 @@ module.exports = function (opts) {
 			return;
 		}
 
-		var report;
+		let report;
 
 		try {
 			report = xo.lintText(file.contents.toString(), {filename: file.relative});
@@ -33,7 +31,7 @@ module.exports = function (opts) {
 			this.emit('error', new gutil.PluginError('gulp-xo', err, {fileName: file.path}));
 		}
 
-		var result = report.results;
+		let result = report.results;
 
 		if (opts.quiet) {
 			result = xo.getErrorResults(result);
@@ -46,9 +44,7 @@ module.exports = function (opts) {
 
 		cb(null, file);
 	}, function (cb) {
-		results = results.reduce(function (a, b) {
-			return a.concat(b);
-		}, []);
+		results = results.reduce((a, b) => a.concat(b), []);
 
 		if (errorCount > 0 || warningCount > 0) {
 			gutil.log('gulp-xo\n', xo.getFormatter(opts.reporter)(results));

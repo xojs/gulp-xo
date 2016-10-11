@@ -10,7 +10,7 @@
     "url": "sindresorhus.com"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "xo && ava"
@@ -49,14 +49,16 @@
   ],
   "dependencies": {
     "gulp-util": "^3.0.6",
-    "object-assign": "^4.0.1",
     "through2": "^2.0.0",
-    "xo": "^0.16.0"
+    "xo": "^0.17.0"
   },
   "devDependencies": {
     "ava": "*",
     "gulp": "^3.9.0",
     "hooker": "^0.2.3",
     "vinyl-file": "^2.0.0"
+  },
+  "xo": {
+    "esnext": true
   }
 }

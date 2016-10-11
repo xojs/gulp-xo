@@ -1,7 +1,8 @@
 'use strict';
-var gulp = require('gulp');
-var xo = require('./');
+const gulp = require('gulp');
+const xo = require('./');
 
-gulp.task('default', function () {
-	return gulp.src('fixture.js').pipe(xo({reporter: 'unix'}));
-});
+gulp.task('default', () =>
+	gulp.src('fixture.js')
+		.pipe(xo({reporter: 'unix'}))
+);
