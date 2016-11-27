@@ -5,7 +5,9 @@ const xo = require('xo');
 
 module.exports = opts => {
 	opts = Object.assign({
-		quiet: false
+		quiet: false,
+		withDrop: true,	// drop task if errors
+		options: {}	// xo options
 	}, opts);
 
 	let results = [];
@@ -26,7 +28,7 @@ module.exports = opts => {
 		let report;
 
 		try {
-			report = xo.lintText(file.contents.toString(), {filename: file.relative});
+			report = xo.lintText(file.contents.toString(), Object.assign({filename: file.relative}, opts.options));
 		} catch (err) {
 			this.emit('error', new gutil.PluginError('gulp-xo', err, {fileName: file.path}));
 		}
@@ -50,7 +52,7 @@ module.exports = opts => {
 			gutil.log('gulp-xo\n', xo.getFormatter(opts.reporter)(results));
 		}
 
-		if (errorCount > 0) {
+		if (errorCount > 0 && opts.withDrop) {
 			this.emit('error', new gutil.PluginError('gulp-xo', errorCount + ' errors'));
 		}
 
