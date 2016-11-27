@@ -6,8 +6,8 @@ const xo = require('xo');
 module.exports = opts => {
 	opts = Object.assign({
 		quiet: false,
-		withDrop: true, // drop task if errors
-    		options: {} // xo options
+		withDrop: true,	// drop task if errors
+		options: {}	// xo options
 	}, opts);
 
 	let results = [];
