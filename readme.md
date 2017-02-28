@@ -52,6 +52,35 @@ Default: `false`
 
 Report errors only.
 
+##### output
+
+- Type: `string`<br>
+- Default: `null`
+- Value: Output file path
+- reporter: Any file reporter => [ESLint formatters](http://eslint.org/docs/user-guide/formatters/).
+- `reporter`'s: 
+  * `checkstyle`
+  * `junit`
+  * `json`
+  * `jslint-xml`
+  * `tap`  
+
+Example for `checkstyle` reporter:
+
+```js
+	// Collect all 'gulp-*' plugins in one place!
+	var plugins = require('gulp-load-plugins')();
+	
+	...
+	
+	//https://www.npmjs.com/package/gulp-xo
+	.pipe(plugins.xo({
+		reporter: 'checkstyle',
+		output: __dirname + '/dist/checkstyle.xml'
+	}));
+	
+	...
+```
 
 ## License
 
