@@ -53,7 +53,7 @@ module.exports = opts => {
 
 		if (errorCount > 0 || warningCount > 0) {
 			if (opts.output) {
-				let filePath = opts.output;
+				const filePath = opts.output;
 
 				if (path.isAbsolute(filePath)) {
 					if (!fs.existsSync(filePath)) {
