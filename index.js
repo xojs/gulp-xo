@@ -1,18 +1,23 @@
 'use strict';
+
 const gutil = require('gulp-util');
 const through = require('through2');
 const xo = require('xo');
+const fs = require('fs');
+const path = require('path');
+const gXOutils = require('./g-xo-utils');
 
 module.exports = opts => {
 	opts = Object.assign({
-		quiet: false
+		quiet: false,
+		output: null
 	}, opts);
 
 	let results = [];
 	let errorCount = 0;
 	let warningCount = 0;
 
-	return through.obj(function (file, enc, cb) {
+	return through.obj(function(file, enc, cb) {
 		if (file.isNull()) {
 			cb(null, file);
 			return;
@@ -43,14 +48,29 @@ module.exports = opts => {
 		results.push(result);
 
 		cb(null, file);
-	}, function (cb) {
+	}, function(cb) {
 		results = results.reduce((a, b) => a.concat(b), []);
 
 		if (errorCount > 0 || warningCount > 0) {
-			gutil.log('gulp-xo\n', xo.getFormatter(opts.reporter)(results));
+			if (opts.output) {
+				var filePath = opts.output;
+
+				if (path.isAbsolute(filePath)) {
+
+					if (!fs.existsSync(filePath)) {
+						fs.mkdirSync(path.dirname(filePath));
+					}
+
+					gXOutils.writeResults(xo.getFormatter(opts.reporter)(results), gXOutils.resolveWritable(fs.createWriteStream(filePath)));
+				} else {
+					this.emit('error', new gutil.PluginError('gulp-xo', 'Bad output file path: [ ' + filePath + ' ].'));
+				}
+			} else {
+				gutil.log('gulp-xo\n', xo.getFormatter(opts.reporter)(results));
+			}
 		}
 
-		if (errorCount > 0) {
+		if (errorCount > 0 && !opts.output) {
 			this.emit('error', new gutil.PluginError('gulp-xo', errorCount + ' errors'));
 		}
 
