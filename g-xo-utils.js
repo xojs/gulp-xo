@@ -1,3 +1,5 @@
+/*eslint-env es6*/
+
 /**
  * See: https://github.com/adametry/gulp-eslint/blob/master/util.js
  */
@@ -32,7 +34,7 @@ exports.writeResults = (results, writable) => {
 		results = [];
 	}
 
-	if (writable && results != null && results !== '') {
+	if (writable && results !== null && results !== '') {
 		writable(results);
 	}
 };
