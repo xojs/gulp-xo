@@ -1,10 +1,10 @@
 'use strict';
 
+const fs = require('fs');
+const path = require('path');
 const gutil = require('gulp-util');
 const through = require('through2');
 const xo = require('xo');
-const fs = require('fs');
-const path = require('path');
 const gXOutils = require('./g-xo-utils');
 
 module.exports = opts => {
@@ -17,7 +17,7 @@ module.exports = opts => {
 	let errorCount = 0;
 	let warningCount = 0;
 
-	return through.obj(function(file, enc, cb) {
+	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
 			cb(null, file);
 			return;
@@ -48,15 +48,14 @@ module.exports = opts => {
 		results.push(result);
 
 		cb(null, file);
-	}, function(cb) {
+	}, function (cb) {
 		results = results.reduce((a, b) => a.concat(b), []);
 
 		if (errorCount > 0 || warningCount > 0) {
 			if (opts.output) {
-				var filePath = opts.output;
+				let filePath = opts.output;
 
 				if (path.isAbsolute(filePath)) {
-
 					if (!fs.existsSync(filePath)) {
 						fs.mkdirSync(path.dirname(filePath));
 					}
