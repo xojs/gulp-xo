@@ -1,4 +1,4 @@
-/*eslint-env es6*/
+/* eslint-env es6 */
 
 /**
  * See: https://github.com/adametry/gulp-eslint/blob/master/util.js
@@ -14,7 +14,7 @@ const gutil = require('gulp-util');
  * @param {(Function|stream)} [writable=gulp-util.log] - A stream or function to resolve as a format writer
  * @returns {Function} A function that writes formatted messages
  */
-exports.resolveWritable = (writable) => {
+exports.resolveWritable = writable => {
 	if (!writable) {
 		writable = gutil.log;
 	} else if (typeof writable.write === 'function') {
