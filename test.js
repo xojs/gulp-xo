@@ -2,7 +2,7 @@ import test from 'ava';
 import vinylFile from 'vinyl-file';
 import hooker from 'hooker';
 import gutil from 'gulp-util';
-import xo from './';
+import xo from '.';
 
 test(t => {
 	t.plan(1);
@@ -19,7 +19,7 @@ test(t => {
 	});
 
 	stream.on('error', () => ({}));
-	stream.write(vinylFile.readSync('fixture.js'));
-	stream.write(vinylFile.readSync('fixture.js'));
+	stream.write(vinylFile.readSync('_fixture.js'));
+	stream.write(vinylFile.readSync('_fixture.js'));
 	stream.end();
 });

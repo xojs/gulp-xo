@@ -13,7 +13,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo && ava"
+    "test": "xo --ignore='_fixture.js' && ava"
   },
   "files": [
     "index.js"
@@ -50,15 +50,12 @@
   "dependencies": {
     "gulp-util": "^3.0.6",
     "through2": "^2.0.0",
-    "xo": "^0.17.0"
+    "xo": "^0.18.0"
   },
   "devDependencies": {
     "ava": "*",
     "gulp": "^3.9.0",
     "hooker": "^0.2.3",
-    "vinyl-file": "^2.0.0"
-  },
-  "xo": {
-    "esnext": true
+    "vinyl-file": "^3.0.0"
   }
 }
