@@ -1,4 +1,5 @@
 'use strict';
+const path = require('path');
 const gutil = require('gulp-util');
 const through = require('through2');
 const xo = require('xo');
@@ -28,7 +29,7 @@ module.exports = opts => {
 		try {
 			report = xo.lintText(file.contents.toString(), {
 				cwd: file.cwd,
-				filename: file.relative
+				filename: path.relative(file.cwd, file.path)
 			});
 		} catch (err) {
 			this.emit('error', new gutil.PluginError('gulp-xo', err, {fileName: file.path}));
