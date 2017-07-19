@@ -54,6 +54,10 @@ Report errors only.
 
 ### [xo.formatEach(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformateachformatter-output)
 
+## Related
+
+- [gulp-eslint](https://github.com/adametry/gulp-eslint)
+- [gulp-reporter](https://github.com/gucong3000/gulp-reporter)
 
 ## License
 
