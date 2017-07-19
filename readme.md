@@ -42,29 +42,17 @@ Default: `false`
 
 Report errors only.
 
-### xo.result(action)
+### [xo.result(action)](https://github.com/adametry/gulp-eslint/#eslintresultaction)
 
-See: https://github.com/adametry/gulp-eslint/#eslintresultaction
+### [xo.results(action)](https://github.com/adametry/gulp-eslint/#eslintresultsaction)
 
-### xo.results(action)
+### [xo.failOnError()](https://github.com/adametry/gulp-eslint/#eslintfailonerror)
 
-See: https://github.com/adametry/gulp-eslint/#eslintresultsaction
+### [xo.failAfterError()](https://github.com/adametry/gulp-eslint/#eslintfailaftererror)
 
-### xo.failOnError()
+### [xo.format(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformatformatter-output)
 
-See: https://github.com/adametry/gulp-eslint/#eslintfailonerror
-
-### xo.failAfterError()
-
-See: https://github.com/adametry/gulp-eslint/#eslintfailaftererror
-
-### xo.format(formatter, output)
-
-See: https://github.com/adametry/gulp-eslint/#eslintformatformatter-output
-
-### xo.formatEach(formatter, output)
-
-https://github.com/adametry/gulp-eslint/#eslintformateachformatter-output
+### [xo.formatEach(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformateachformatter-output)
 
 
 ## License
