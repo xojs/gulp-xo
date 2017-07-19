@@ -23,7 +23,8 @@ const xo = require('gulp-xo');
 gulp.task('default', () =>
 	gulp.src('src/app.js')
 		.pipe(xo())
-		.pipe(gulp.dest('dist'))
+		.pipe(xo.format())
+		.pipe(xo.failAfterError())
 );
 ```
 
@@ -34,23 +35,36 @@ gulp.task('default', () =>
 
 #### options
 
-XO [options](https://github.com/sindresorhus/xo#config) can be specified in package.json.
-
-In the gulpfile you can specify the following options:
-
-##### reporter
-
-Type: `string`<br>
-Default: [`eslint-formatter-pretty`](https://github.com/sindresorhus/eslint-formatter-pretty)
-
-Any [ESLint reporter](http://eslint.org/docs/user-guide/command-line-interface#f---format).
-
 ##### quiet
 
 Type: `boolean`<br>
 Default: `false`
 
 Report errors only.
+
+### xo.result(action)
+
+See: https://github.com/adametry/gulp-eslint/#eslintresultaction
+
+### xo.results(action)
+
+See: https://github.com/adametry/gulp-eslint/#eslintresultsaction
+
+### xo.failOnError()
+
+See: https://github.com/adametry/gulp-eslint/#eslintfailonerror
+
+### xo.failAfterError()
+
+See: https://github.com/adametry/gulp-eslint/#eslintfailaftererror
+
+### xo.format(formatter, output)
+
+See: https://github.com/adametry/gulp-eslint/#eslintformatformatter-output
+
+### xo.formatEach(formatter, output)
+
+https://github.com/adametry/gulp-eslint/#eslintformateachformatter-output
 
 
 ## License

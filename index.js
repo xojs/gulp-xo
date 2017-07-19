@@ -1,4 +1,5 @@
 'use strict';
+const eslint = require('gulp-eslint');
 const gutil = require('gulp-util');
 const through = require('through2');
 const xo = require('xo');
@@ -7,10 +8,6 @@ module.exports = opts => {
 	opts = Object.assign({
 		quiet: false
 	}, opts);
-
-	let results = [];
-	let errorCount = 0;
-	let warningCount = 0;
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
@@ -40,23 +37,10 @@ module.exports = opts => {
 			result = xo.getErrorResults(result);
 		}
 
-		errorCount += report.errorCount;
-		warningCount += report.warningCount;
-
-		results.push(result);
+		file.eslint = result[0];
 
 		cb(null, file);
-	}, function (cb) {
-		results = results.reduce((a, b) => a.concat(b), []);
-
-		if (errorCount > 0 || warningCount > 0) {
-			gutil.log('gulp-xo\n', xo.getFormatter(opts.reporter)(results));
-		}
-
-		if (errorCount > 0) {
-			this.emit('error', new gutil.PluginError('gulp-xo', `${errorCount} errors`));
-		}
-
-		cb();
 	});
 };
+
+Object.assign(module.exports, eslint);
