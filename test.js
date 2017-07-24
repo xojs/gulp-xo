@@ -23,3 +23,20 @@ test(t => {
 	stream.write(vinylFile.readSync('_fixture.js'));
 	stream.end();
 });
+
+test('opts.fix', t => {
+	const stream = xo({
+		fix: true
+	});
+
+	stream.on('data', file => {
+		t.is(file.contents.toString(), 'alert();\n');
+		t.pass();
+	});
+	stream.on('error', () => ({}));
+	stream.write(new gutil.File({
+		path: __filename,
+		contents: Buffer.from('alert()')
+	}));
+	stream.end();
+});

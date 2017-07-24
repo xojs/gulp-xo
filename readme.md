@@ -45,13 +45,24 @@ Default: [`eslint-formatter-pretty`](https://github.com/sindresorhus/eslint-form
 
 Any [ESLint reporter](http://eslint.org/docs/user-guide/command-line-interface#f---format).
 
-##### quiet
+##### options.fix
+
+Type: `boolean`
+
+This option instructs ESLint to try to fix as many issues as possible. The fixes are applied to the gulp stream. The fixed content can be saved to file using `gulp.dest` (See [example/fix.js](https://github.com/adametry/gulp-eslint/blob/master/example/fix.js)). Rules that are fixable can be found in ESLint's [rules list](http://eslint.org/docs/rules/).
+
+When fixes are applied, a "fixed" property is set to `true` on the fixed file's ESLint result.
+
+##### options.quiet
 
 Type: `boolean`<br>
 Default: `false`
 
-Report errors only.
+When `true`, this option will filter warning messages from ESLint results. This mimics the ESLint CLI [quiet option](http://eslint.org/docs/user-guide/command-line-interface#quiet).
 
+Type: `function (message, index, list) { return Boolean(); }`
+
+When provided a function, it will be used to filter ESLint result messages, removing any messages that do not return a `true` (or truthy) value.
 
 ## License
 

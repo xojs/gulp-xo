@@ -1,4 +1,5 @@
 'use strict';
+const path = require('path');
 const gutil = require('gulp-util');
 const through = require('through2');
 const xo = require('xo');
@@ -28,7 +29,8 @@ module.exports = opts => {
 		try {
 			report = xo.lintText(file.contents.toString(), {
 				cwd: file.cwd,
-				filename: file.relative
+				filename: path.relative(file.cwd, file.path),
+				fix: opts.fix
 			});
 		} catch (err) {
 			this.emit('error', new gutil.PluginError('gulp-xo', err, {fileName: file.path}));
@@ -42,6 +44,13 @@ module.exports = opts => {
 
 		errorCount += report.errorCount;
 		warningCount += report.warningCount;
+
+		file.eslint = result[0];
+
+		if (file.eslint.output) {
+			file.contents = Buffer.from(file.eslint.output);
+			file.eslint.fixed = true;
+		}
 
 		results.push(result);
 
