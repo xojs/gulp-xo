@@ -42,22 +42,22 @@ Default: `false`
 
 Report errors only.
 
+### [xo.format(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformatformatter-output)
+
+### [xo.failAfterError()](https://github.com/adametry/gulp-eslint/#eslintfailaftererror)
+
+### [xo.failOnError()](https://github.com/adametry/gulp-eslint/#eslintfailonerror)
+
+### [xo.formatEach(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformateachformatter-output)
+
 ### [xo.result(action)](https://github.com/adametry/gulp-eslint/#eslintresultaction)
 
 ### [xo.results(action)](https://github.com/adametry/gulp-eslint/#eslintresultsaction)
 
-### [xo.failOnError()](https://github.com/adametry/gulp-eslint/#eslintfailonerror)
-
-### [xo.failAfterError()](https://github.com/adametry/gulp-eslint/#eslintfailaftererror)
-
-### [xo.format(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformatformatter-output)
-
-### [xo.formatEach(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformateachformatter-output)
-
 ## Related
 
-- [gulp-eslint](https://github.com/adametry/gulp-eslint)
-- [gulp-reporter](https://github.com/gucong3000/gulp-reporter)
+- [gulp-eslint](https://github.com/adametry/gulp-eslint): A gulp plugin for ESLint.
+- [gulp-reporter](https://github.com/gucong3000/gulp-reporter): Error report for: CSSLint, EditorConfig, ESLint, HTMLHint, JSCS, JSHint, PostCSS, TSLint, XO.
 
 ## License
 

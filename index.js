@@ -1,5 +1,6 @@
 'use strict';
 const eslint = require('gulp-eslint');
+const formatterPretty = require('eslint-formatter-pretty');
 const gutil = require('gulp-util');
 const through = require('through2');
 const xo = require('xo');
@@ -44,3 +45,9 @@ module.exports = opts => {
 };
 
 Object.assign(module.exports, eslint);
+
+['formatEach', 'format'].forEach(fn => {
+	module.exports[fn] = (formatter, writable) => (
+		eslint[fn](formatter ? xo.getFormatter(formatter) : formatterPretty, writable)
+	);
+});

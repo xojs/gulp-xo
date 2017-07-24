@@ -13,7 +13,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo --ignore _fixture.js && ava"
+    "test": "xo --ignore='_fixture.js' && ava"
   },
   "files": [
     "index.js"
@@ -48,6 +48,7 @@
     "simple"
   ],
   "dependencies": {
+    "eslint-formatter-pretty": "^1.1.0",
     "gulp-eslint": "^3.0.1",
     "gulp-util": "^3.0.6",
     "through2": "^2.0.0",
@@ -56,6 +57,7 @@
   "devDependencies": {
     "ava": "*",
     "gulp": "^3.9.0",
+    "p-event": "^1.3.0",
     "vinyl-file": "^3.0.0"
   }
 }
