@@ -26,7 +26,7 @@ module.exports = opts => {
 		try {
 			report = xo.lintText(file.contents.toString(), {
 				cwd: file.cwd,
-				filename: file.relative,
+				filename: file.path,
 				fix: opts.fix
 			});
 		} catch (err) {
