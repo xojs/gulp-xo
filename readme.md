@@ -23,7 +23,8 @@ const xo = require('gulp-xo');
 gulp.task('default', () =>
 	gulp.src('src/app.js')
 		.pipe(xo())
-		.pipe(gulp.dest('dist'))
+		.pipe(xo.format())
+		.pipe(xo.failAfterError())
 );
 ```
 
@@ -34,17 +35,6 @@ gulp.task('default', () =>
 
 #### options
 
-XO [options](https://github.com/sindresorhus/xo#config) can be specified in package.json.
-
-In the gulpfile you can specify the following options:
-
-##### reporter
-
-Type: `string`<br>
-Default: [`eslint-formatter-pretty`](https://github.com/sindresorhus/eslint-formatter-pretty)
-
-Any [ESLint reporter](http://eslint.org/docs/user-guide/command-line-interface#f---format).
-
 ##### quiet
 
 Type: `boolean`<br>
@@ -52,6 +42,22 @@ Default: `false`
 
 Report errors only.
 
+### [xo.format(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformatformatter-output)
+
+### [xo.failAfterError()](https://github.com/adametry/gulp-eslint/#eslintfailaftererror)
+
+### [xo.failOnError()](https://github.com/adametry/gulp-eslint/#eslintfailonerror)
+
+### [xo.formatEach(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformateachformatter-output)
+
+### [xo.result(action)](https://github.com/adametry/gulp-eslint/#eslintresultaction)
+
+### [xo.results(action)](https://github.com/adametry/gulp-eslint/#eslintresultsaction)
+
+## Related
+
+- [gulp-eslint](https://github.com/adametry/gulp-eslint): A gulp plugin for ESLint.
+- [gulp-reporter](https://github.com/gucong3000/gulp-reporter): Error report for: CSSLint, EditorConfig, ESLint, HTMLHint, JSCS, JSHint, PostCSS, TSLint, XO.
 
 ## License
 
