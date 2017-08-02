@@ -35,17 +35,6 @@ gulp.task('default', () =>
 
 #### options
 
-XO [options](https://github.com/sindresorhus/xo#config) can be specified in package.json.
-
-In the gulpfile you can specify the following options:
-
-##### reporter
-
-Type: `string`<br>
-Default: [`eslint-formatter-pretty`](https://github.com/sindresorhus/eslint-formatter-pretty)
-
-Any [ESLint reporter](http://eslint.org/docs/user-guide/command-line-interface#f---format).
-
 ##### options.fix
 
 Type: `boolean`
@@ -54,17 +43,12 @@ This option instructs ESLint to try to fix as many issues as possible. The fixes
 
 When fixes are applied, a "fixed" property is set to `true` on the fixed file's ESLint result.
 
-##### options.quiet
+##### quiet
 
 Type: `boolean`<br>
 Default: `false`
 
-When `true`, this option will filter warning messages from ESLint results. This mimics the ESLint CLI [quiet option](http://eslint.org/docs/user-guide/command-line-interface#quiet).
-
-Type: `function (message, index, list) { return Boolean(); }`
-
-When provided a function, it will be used to filter ESLint result messages, removing any messages that do not return a `true` (or truthy) value.
-
+Report errors only.
 
 ### [xo.format(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformatformatter-output)
 
