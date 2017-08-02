@@ -1,5 +1,6 @@
 'use strict';
-const path = require('path');
+const eslint = require('gulp-eslint');
+const formatterPretty = require('eslint-formatter-pretty');
 const gutil = require('gulp-util');
 const through = require('through2');
 const xo = require('xo');
@@ -8,10 +9,6 @@ module.exports = opts => {
 	opts = Object.assign({
 		quiet: false
 	}, opts);
-
-	let results = [];
-	let errorCount = 0;
-	let warningCount = 0;
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
@@ -29,7 +26,7 @@ module.exports = opts => {
 		try {
 			report = xo.lintText(file.contents.toString(), {
 				cwd: file.cwd,
-				filename: path.relative(file.cwd, file.path),
+				filename: file.relative,
 				fix: opts.fix
 			});
 		} catch (err) {
@@ -42,30 +39,16 @@ module.exports = opts => {
 			result = xo.getErrorResults(result);
 		}
 
-		errorCount += report.errorCount;
-		warningCount += report.warningCount;
-
 		file.eslint = result[0];
 
-		if (file.eslint.output) {
-			file.contents = Buffer.from(file.eslint.output);
-			file.eslint.fixed = true;
-		}
-
-		results.push(result);
-
 		cb(null, file);
-	}, function (cb) {
-		results = results.reduce((a, b) => a.concat(b), []);
-
-		if (errorCount > 0 || warningCount > 0) {
-			gutil.log('gulp-xo\n', xo.getFormatter(opts.reporter)(results));
-		}
-
-		if (errorCount > 0) {
-			this.emit('error', new gutil.PluginError('gulp-xo', `${errorCount} errors`));
-		}
-
-		cb();
 	});
 };
+
+Object.assign(module.exports, eslint);
+
+['formatEach', 'format'].forEach(fn => {
+	module.exports[fn] = (formatter, writable) => (
+		eslint[fn](formatter ? xo.getFormatter(formatter) : formatterPretty, writable)
+	);
+});

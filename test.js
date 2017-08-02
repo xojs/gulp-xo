@@ -1,27 +1,32 @@
 import test from 'ava';
 import vinylFile from 'vinyl-file';
-import hooker from 'hooker';
-import gutil from 'gulp-util';
+import pEvent from 'p-event';
 import xo from '.';
 
-test(t => {
-	t.plan(1);
-
+test(async t => {
 	const stream = xo();
-
-	hooker.hook(gutil, 'log', (...args) => {
-		const str = args.join(' ');
-
-		if (/camelcase/.test(str) && /no-unused-vars/.test(str)) {
-			hooker.unhook(gutil, 'log');
-			t.pass();
-		}
+	stream.on('data', file => {
+		t.truthy(file.eslint);
+		t.truthy(file.eslint.messages.length);
+		t.pass();
 	});
-
-	stream.on('error', () => ({}));
+	const finish = pEvent(stream, 'finish');
 	stream.write(vinylFile.readSync('_fixture.js'));
 	stream.write(vinylFile.readSync('_fixture.js'));
 	stream.end();
+	await finish;
+});
+
+test('default formatter', async t => {
+	const stream = xo();
+	stream.pipe(xo.format(null, report => {
+		t.truthy(/[×✖]/.test(report));
+		t.pass();
+	}));
+	const finish = pEvent(stream, 'finish');
+	stream.write(vinylFile.readSync('_fixture.js'));
+	stream.end();
+	await finish;
 });
 
 test('opts.fix', t => {

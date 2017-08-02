@@ -23,7 +23,8 @@ const xo = require('gulp-xo');
 gulp.task('default', () =>
 	gulp.src('src/app.js')
 		.pipe(xo())
-		.pipe(gulp.dest('dist'))
+		.pipe(xo.format())
+		.pipe(xo.failAfterError())
 );
 ```
 
@@ -63,6 +64,24 @@ When `true`, this option will filter warning messages from ESLint results. This 
 Type: `function (message, index, list) { return Boolean(); }`
 
 When provided a function, it will be used to filter ESLint result messages, removing any messages that do not return a `true` (or truthy) value.
+
+
+### [xo.format(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformatformatter-output)
+
+### [xo.failAfterError()](https://github.com/adametry/gulp-eslint/#eslintfailaftererror)
+
+### [xo.failOnError()](https://github.com/adametry/gulp-eslint/#eslintfailonerror)
+
+### [xo.formatEach(formatter, output)](https://github.com/adametry/gulp-eslint/#eslintformateachformatter-output)
+
+### [xo.result(action)](https://github.com/adametry/gulp-eslint/#eslintresultaction)
+
+### [xo.results(action)](https://github.com/adametry/gulp-eslint/#eslintresultsaction)
+
+## Related
+
+- [gulp-eslint](https://github.com/adametry/gulp-eslint): A gulp plugin for ESLint.
+- [gulp-reporter](https://github.com/gucong3000/gulp-reporter): Error report for: CSSLint, EditorConfig, ESLint, HTMLHint, JSCS, JSHint, PostCSS, TSLint, XO.
 
 ## License
 
