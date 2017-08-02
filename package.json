@@ -13,7 +13,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo --ignore _fixture.js && ava"
+    "test": "xo --ignore=_fixture.js && ava"
   },
   "files": [
     "index.js"
