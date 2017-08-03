@@ -36,7 +36,7 @@ test('fix option', async t => {
 	});
 
 	stream.on('data', file => {
-		t.is(file.contents.toString().trim(), 'alert();');
+		t.is(file.contents.toString(), 'alert();\n');
 		t.pass();
 	});
 	const finish = pEvent(stream, 'finish');

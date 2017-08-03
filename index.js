@@ -41,6 +41,11 @@ module.exports = opts => {
 
 		file.eslint = result[0];
 
+		if (file.eslint.output) {
+			file.contents = Buffer.from(file.eslint.output);
+			file.eslint.fixed = true;
+		}
+
 		cb(null, file);
 	});
 };
