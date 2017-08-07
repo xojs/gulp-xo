@@ -26,7 +26,8 @@ module.exports = opts => {
 		try {
 			report = xo.lintText(file.contents.toString(), {
 				cwd: file.cwd,
-				filename: file.path
+				filename: file.path,
+				fix: opts.fix
 			});
 		} catch (err) {
 			this.emit('error', new gutil.PluginError('gulp-xo', err, {fileName: file.path}));
@@ -39,6 +40,11 @@ module.exports = opts => {
 		}
 
 		file.eslint = result[0];
+
+		if (file.eslint.output) {
+			file.contents = Buffer.from(file.eslint.output);
+			file.eslint.fixed = true;
+		}
 
 		cb(null, file);
 	});
