@@ -1,7 +1,7 @@
 import test from 'ava';
 import vinylFile from 'vinyl-file';
-import gutil from 'gulp-util';
 import pEvent from 'p-event';
+import Vinyl from 'vinyl';
 import xo from '.';
 
 test(async t => {
@@ -25,8 +25,7 @@ test('default formatter', async t => {
 		t.pass();
 	}));
 	const finish = pEvent(stream, 'finish');
-	stream.write(vinylFile.readSync('_fixture.js'));
-	stream.end();
+	stream.end(vinylFile.readSync('_fixture.js'));
 	await finish;
 });
 
@@ -40,10 +39,9 @@ test('fix option', async t => {
 		t.pass();
 	});
 	const finish = pEvent(stream, 'finish');
-	stream.write(new gutil.File({
+	stream.end(new Vinyl({
 		path: __filename,
 		contents: Buffer.from('alert()')
 	}));
-	stream.end();
 	await finish;
 });

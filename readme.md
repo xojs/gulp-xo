@@ -62,10 +62,12 @@ Report errors only.
 
 ### [xo.results(action)](https://github.com/adametry/gulp-eslint/#eslintresultsaction)
 
+
 ## Related
 
-- [gulp-eslint](https://github.com/adametry/gulp-eslint): A gulp plugin for ESLint.
-- [gulp-reporter](https://github.com/gucong3000/gulp-reporter): Error report for: CSSLint, EditorConfig, ESLint, HTMLHint, JSCS, JSHint, PostCSS, TSLint, XO.
+- [gulp-eslint](https://github.com/adametry/gulp-eslint) - Gulp plugin for ESLint
+- [gulp-reporter](https://github.com/gucong3000/gulp-reporter) - Error reporter for CSSLint, EditorConfig, ESLint, HTMLHint, PostCSS, TSLint, XO
+
 
 ## License
 

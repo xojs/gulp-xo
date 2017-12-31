@@ -1,14 +1,14 @@
 'use strict';
 const eslint = require('gulp-eslint');
 const formatterPretty = require('eslint-formatter-pretty');
-const gutil = require('gulp-util');
 const through = require('through2');
 const xo = require('xo');
+const PluginError = require('plugin-error');
 
-module.exports = opts => {
-	opts = Object.assign({
+module.exports = options => {
+	options = Object.assign({
 		quiet: false
-	}, opts);
+	}, options);
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
@@ -17,7 +17,7 @@ module.exports = opts => {
 		}
 
 		if (file.isStream()) {
-			cb(new gutil.PluginError('gulp-xo', 'Streaming not supported'));
+			cb(new PluginError('gulp-xo', 'Streaming not supported'));
 			return;
 		}
 
@@ -27,15 +27,15 @@ module.exports = opts => {
 			report = xo.lintText(file.contents.toString(), {
 				cwd: file.cwd,
 				filename: file.path,
-				fix: opts.fix
+				fix: options.fix
 			});
 		} catch (err) {
-			this.emit('error', new gutil.PluginError('gulp-xo', err, {fileName: file.path}));
+			this.emit('error', new PluginError('gulp-xo', err, {fileName: file.path}));
 		}
 
 		let result = report.results;
 
-		if (opts.quiet) {
+		if (options.quiet) {
 			result = xo.getErrorResults(result);
 		}
 
@@ -52,8 +52,8 @@ module.exports = opts => {
 
 Object.assign(module.exports, eslint);
 
-['formatEach', 'format'].forEach(fn => {
+for (const fn of ['formatEach', 'format']) {
 	module.exports[fn] = (formatter, writable) => (
 		eslint[fn](formatter ? xo.getFormatter(formatter) : formatterPretty, writable)
 	);
-});
+}
