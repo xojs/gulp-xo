@@ -1,6 +1,6 @@
-# gulp-xo [![Build Status](https://travis-ci.org/sindresorhus/gulp-xo.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-xo)
+# gulp-xo [![Build Status](https://travis-ci.org/xojs/gulp-xo.svg?branch=master)](https://travis-ci.org/xojs/gulp-xo)
 
-> Validate files with [XO](https://github.com/sindresorhus/xo)
+> Validate files with [XO](https://github.com/xojs/xo)
 
 ![](screenshot.png)
 

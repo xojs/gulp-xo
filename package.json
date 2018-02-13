@@ -3,7 +3,7 @@
 	"version": "0.16.1",
 	"description": "Validate files with XO",
 	"license": "MIT",
-	"repository": "sindresorhus/gulp-xo",
+	"repository": "xojs/gulp-xo",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
