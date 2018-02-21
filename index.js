@@ -35,6 +35,11 @@ module.exports = options => {
 
 		let result = report.results;
 
+		if (result.length === 0) {
+			cb(null, file);
+			return;
+		}
+
 		if (options.quiet) {
 			result = xo.getErrorResults(result);
 		}
