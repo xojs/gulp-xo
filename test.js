@@ -5,7 +5,7 @@ import pEvent from 'p-event';
 import Vinyl from 'vinyl';
 import xo from '.';
 
-test(async t => {
+test('main', async t => {
 	const stream = xo();
 	stream.on('data', file => {
 		t.truthy(file.eslint);
