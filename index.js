@@ -6,37 +6,37 @@ const xo = require('xo');
 const PluginError = require('plugin-error');
 
 module.exports = options => {
-	options = Object.assign({
-		quiet: false
-	}, options);
+	options = {
+		quiet: false,
+		...options
+	};
 
-	return through.obj(function (file, enc, cb) {
+	return through.obj(function (file, encoding, callback) {
 		if (file.isNull()) {
-			cb(null, file);
+			callback(null, file);
 			return;
 		}
 
 		if (file.isStream()) {
-			cb(new PluginError('gulp-xo', 'Streaming not supported'));
+			callback(new PluginError('gulp-xo', 'Streaming not supported'));
 			return;
 		}
 
 		let report;
-
 		try {
 			report = xo.lintText(file.contents.toString(), {
 				cwd: file.cwd,
 				filename: file.path,
 				fix: options.fix
 			});
-		} catch (err) {
-			this.emit('error', new PluginError('gulp-xo', err, {fileName: file.path}));
+		} catch (error) {
+			this.emit('error', new PluginError('gulp-xo', error, {fileName: file.path}));
 		}
 
 		let result = report.results;
 
 		if (result.length === 0) {
-			cb(null, file);
+			callback(null, file);
 			return;
 		}
 
@@ -51,7 +51,7 @@ module.exports = options => {
 			file.eslint.fixed = true;
 		}
 
-		cb(null, file);
+		callback(null, file);
 	});
 };
 

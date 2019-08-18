@@ -2,7 +2,7 @@
 const gulp = require('gulp');
 const xo = require('.');
 
-gulp.task('default', () =>
+exports.default = () => (
 	gulp.src('_fixture.js')
 		.pipe(xo())
 		.pipe(xo.format())

@@ -20,7 +20,7 @@ $ npm install --save-dev gulp-xo
 const gulp = require('gulp');
 const xo = require('gulp-xo');
 
-gulp.task('default', () =>
+exports.default = () => (
 	gulp.src('src/app.js')
 		.pipe(xo())
 		.pipe(xo.format())
@@ -31,11 +31,13 @@ gulp.task('default', () =>
 
 ## API
 
-### xo([options])
+### xo(options?)
 
 #### options
 
-##### options.fix
+Type: `object`
+
+##### fix
 
 Type: `boolean`
 
@@ -67,8 +69,3 @@ Report errors only.
 
 - [gulp-eslint](https://github.com/adametry/gulp-eslint) - Gulp plugin for ESLint
 - [gulp-reporter](https://github.com/gucong3000/gulp-reporter) - Error reporter for CSSLint, EditorConfig, ESLint, HTMLHint, PostCSS, TSLint, XO
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
