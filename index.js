@@ -25,9 +25,9 @@ module.exports = options => {
 		let report;
 		try {
 			report = xo.lintText(file.contents.toString(), {
+				...options,
 				cwd: file.cwd,
-				filename: file.path,
-				fix: options.fix
+				filename: file.path
 			});
 		} catch (error) {
 			this.emit('error', new PluginError('gulp-xo', error, {fileName: file.path}));
