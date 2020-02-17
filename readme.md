@@ -6,13 +6,11 @@
 
 *Issues regarding rules should be reported on the ESLint [issue tracker](https://github.com/eslint/eslint/issues) as it's the actual linter.*
 
-
 ## Install
 
 ```
 $ npm install --save-dev gulp-xo
 ```
-
 
 ## Usage
 
@@ -28,7 +26,6 @@ exports.default = () => (
 );
 ```
 
-
 ## API
 
 ### xo(options?)
@@ -37,11 +34,7 @@ exports.default = () => (
 
 Type: `object`
 
-Any additional options to the below are passed directly to XO.
-
-Note that you should normally set your XO options in the `package.json` file. Only pass them through `gulp-xo` if you want to use options different from those of your current project. You might want to do this if your gulp task lints or builds files that are or will be part of a separate project.
-
-See https://github.com/xojs/xo/blob/master/readme.md#config
+Any additional options to the below are [passed directly to XO](https://github.com/xojs/xo/blob/master/readme.md#config). However, you should prefer setting your XO config in `package.json` so editors and other tools can also read it. Only pass them here if you want to use options different from those of your current project. You might want to do this if your Gulp task lints or builds files that are/will be part of a separate project.
 
 ##### fix
 
@@ -53,7 +46,7 @@ When fixes are applied, a "fixed" property is set to `true` on the fixed file's 
 
 ##### quiet
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `false`
 
 Report errors only.
@@ -69,7 +62,6 @@ Report errors only.
 ### [xo.result(action)](https://github.com/adametry/gulp-eslint/#eslintresultaction)
 
 ### [xo.results(action)](https://github.com/adametry/gulp-eslint/#eslintresultsaction)
-
 
 ## Related
 

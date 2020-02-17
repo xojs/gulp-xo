@@ -4,13 +4,14 @@
 	"description": "Validate files with XO",
 	"license": "MIT",
 	"repository": "xojs/gulp-xo",
+	"funding": "https://github.com/sponsors/sindresorhus",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"url": "https://sindresorhus.com"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=10"
 	},
 	"scripts": {
 		"test": "ava"
@@ -47,11 +48,11 @@
 		"simple"
 	],
 	"dependencies": {
-		"eslint-formatter-pretty": "^2.0.0",
+		"eslint-formatter-pretty": "^3.0.1",
 		"gulp-eslint": "^6.0.0",
 		"plugin-error": "^1.0.1",
 		"through2": "^3.0.0",
-		"xo": "^0.25.3"
+		"xo": "^0.26.1"
 	},
 	"devDependencies": {
 		"ava": "^2.4.0",
