@@ -37,6 +37,12 @@ exports.default = () => (
 
 Type: `object`
 
+Any additional options to the below are passed directly to XO.
+
+Note that you should normally set your XO options in the `package.json` file. Only pass them through `gulp-xo` if you want to use options different from those of your current project. You might want to do this if your gulp task lints or builds files that are or will be part of a separate project.
+
+See https://github.com/xojs/xo/blob/master/readme.md#config
+
 ##### fix
 
 Type: `boolean`
