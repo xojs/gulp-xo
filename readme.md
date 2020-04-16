@@ -1,4 +1,4 @@
-# gulp-xo [![Build Status](https://travis-ci.org/xojs/gulp-xo.svg?branch=master)](https://travis-ci.org/xojs/gulp-xo)
+# gulp-xo [![Build Status](https://travis-ci.com/xojs/gulp-xo.svg?branch=master)](https://travis-ci.com/xojs/gulp-xo)
 
 > Validate files with [XO](https://github.com/xojs/xo)
 
@@ -40,7 +40,7 @@ Any additional options to the below are [passed directly to XO](https://github.c
 
 Type: `boolean`
 
-This option instructs ESLint to try to fix as many issues as possible. The fixes are applied to the gulp stream. The fixed content can be saved to file using `gulp.dest` (See [example/fix.js](https://github.com/adametry/gulp-eslint/blob/master/example/fix.js)). Rules that are fixable can be found in ESLint's [rules list](http://eslint.org/docs/rules/).
+This option instructs ESLint to try to fix as many issues as possible. The fixes are applied to the gulp stream. The fixed content can be saved to file using `gulp.dest` (See [example/fix.js](https://github.com/adametry/gulp-eslint/blob/master/example/fix.js)). Rules that are fixable can be found in ESLint's [rules list](https://eslint.org/docs/rules/).
 
 When fixes are applied, a "fixed" property is set to `true` on the fixed file's ESLint result.
 
