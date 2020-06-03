@@ -1,6 +1,6 @@
 {
 	"name": "gulp-xo",
-	"version": "0.24.0",
+	"version": "0.25.0",
 	"description": "Validate files with XO",
 	"license": "MIT",
 	"repository": "xojs/gulp-xo",
