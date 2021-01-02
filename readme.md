@@ -1,4 +1,4 @@
-# gulp-xo [![Build Status](https://travis-ci.com/xojs/gulp-xo.svg?branch=master)](https://travis-ci.com/github/xojs/gulp-xo)
+# gulp-xo
 
 > Validate files with [XO](https://github.com/xojs/xo)
 
