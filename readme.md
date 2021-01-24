@@ -34,13 +34,13 @@ exports.default = () => (
 
 Type: `object`
 
-Any additional options to the below are [passed directly to XO](https://github.com/xojs/xo/blob/master/readme.md#config). However, you should prefer setting your XO config in `package.json` so editors and other tools can also read it. Only pass them here if you want to use options different from those of your current project. You might want to do this if your Gulp task lints or builds files that are/will be part of a separate project.
+Any additional options to the below are [passed directly to XO](https://github.com/xojs/xo/blob/main/readme.md#config). However, you should prefer setting your XO config in `package.json` so editors and other tools can also read it. Only pass them here if you want to use options different from those of your current project. You might want to do this if your Gulp task lints or builds files that are/will be part of a separate project.
 
 ##### fix
 
 Type: `boolean`
 
-This option instructs ESLint to try to fix as many issues as possible. The fixes are applied to the gulp stream. The fixed content can be saved to file using `gulp.dest` (See [example/fix.js](https://github.com/adametry/gulp-eslint/blob/master/example/fix.js)). Rules that are fixable can be found in ESLint's [rules list](https://eslint.org/docs/rules/).
+This option instructs ESLint to try to fix as many issues as possible. The fixes are applied to the gulp stream. The fixed content can be saved to file using `gulp.dest` (See [example/fix.js](https://github.com/adametry/gulp-eslint/blob/main/example/fix.js)). Rules that are fixable can be found in ESLint's [rules list](https://eslint.org/docs/rules/).
 
 When fixes are applied, a "fixed" property is set to `true` on the fixed file's ESLint result.
 
